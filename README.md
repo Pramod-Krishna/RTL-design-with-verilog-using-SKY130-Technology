@@ -1,4 +1,4 @@
-<br> # **_RTL-design-with-verilog-using-SKY130-Technology_**
+# **_RTL-design-with-verilog-using-SKY130-Technology_**
 
 
 <p align="center">
