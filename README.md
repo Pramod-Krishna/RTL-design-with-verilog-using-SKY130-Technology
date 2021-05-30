@@ -167,6 +167,59 @@ On the contrary, _q_ is always 1
 ![image](https://user-images.githubusercontent.com/54993262/120082098-b19c1100-c0de-11eb-9496-50ac403fcca6.png)
 ![image](https://user-images.githubusercontent.com/54993262/120082230-65050580-c0df-11eb-8885-11990a8a5cda.png)
 
+***
+
+# GLS, blocking vs non-blocking and Synthesis-Simulation mismatch
+
+
+***
+
+# Optimization in synthesis
+Let'c consider the example of _If_ statements first. 
+Verilog module: _incomp_if_. Since the _else_ condition is mentioned, it behaves like a _D_latch_.   
+![image](https://user-images.githubusercontent.com/54993262/120099877-7ab81080-c15b-11eb-8231-4694c667ff41.png)
+The simulated output is as below. Whenever select line _i0_ goes to 0, output _y_ is latching. If _i0_ is high, output follows _i1_.
+![image](https://user-images.githubusercontent.com/54993262/120100012-19dd0800-c15c-11eb-8318-c083e7fadd77.png)
+
+We can see during synthesis, it clearly infers a _D_latch_ 
+![image](https://user-images.githubusercontent.com/54993262/120100159-d767fb00-c15c-11eb-947f-949c8f7dc8cc.png)
+![image](https://user-images.githubusercontent.com/54993262/120100192-f8305080-c15c-11eb-8a97-7cbda6d463b1.png)
+
+Verilog Module : _incomp_if2.v_
+![image](https://user-images.githubusercontent.com/54993262/120100216-2150e100-c15d-11eb-9988-2b8425b75cb6.png)
+Synthesis output: When _i0_ is high, output exactly follows _i1_. when both _i0_ and _i2_ are low, output is constant. 
+![image](https://user-images.githubusercontent.com/54993262/120100260-78ef4c80-c15d-11eb-8af2-456546e4c02f.png)
+Simulation output:
+![image](https://user-images.githubusercontent.com/54993262/120100307-be137e80-c15d-11eb-8cd0-6106c8efcfc2.png)
+
+_Case Statements_
+![image](https://user-images.githubusercontent.com/54993262/120100942-1009d380-c161-11eb-8169-34bd4d6b0607.png)
+
+Synthesis output: Whenever _select[0]_ is 0 it follows _i0_, if 1 it follows _i1_. 
+![image](https://user-images.githubusercontent.com/54993262/120100979-54956f00-c161-11eb-8cda-3734690177bc.png)
+
+Simulator output : The enable condition is negation of _sel[1]_. 
+![image](https://user-images.githubusercontent.com/54993262/120101177-5ad81b00-c162-11eb-971e-268350e017ea.png)
+
+![image](https://user-images.githubusercontent.com/54993262/120101147-37ad6b80-c162-11eb-9c30-1de766054600.png)
+
+
+Using _defualt_ statements can partially solve the problems of latching. We can observe by the following example.
+![image](https://user-images.githubusercontent.com/54993262/120101800-84df0c80-c165-11eb-9551-8a6b5307007d.png)
+![image](https://user-images.githubusercontent.com/54993262/120101878-fcad3700-c165-11eb-82ab-5c88143cfc29.png)
+Thus no latches are inferred.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
