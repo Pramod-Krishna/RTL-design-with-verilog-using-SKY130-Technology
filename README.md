@@ -9,15 +9,17 @@
 
 # **_Table of Contents_**
 
-* ## Introduction to Verilog RTL design and Synthesis
+* ## [Introduction to Verilog RTL design and Synthesis](https://github.com/Pramod-Krishna/RTL-design-with-verilog-using-SKY130-Technology#introduction-to-verilog-rtl-design-and-synthesis-1)
 
-* ## Timing libs, hierarchical vs flat synthesis and efficient flop coding styles
+* ## [Timing libs, hierarchical vs flat synthesis and efficient flop coding styles](https://github.com/Pramod-Krishna/RTL-design-with-verilog-using-SKY130-Technology#timing-libs-hierarchical-vs-flat-synthesis-and-efficient-flop-coding-styles-1)
 
-* ## Combinational and sequential optmizations
+* ## [Combinational and sequential optmizations](https://github.com/Pramod-Krishna/RTL-design-with-verilog-using-SKY130-Technology#combinational-and-sequential-optmizations-1)
 
-* ## GLS, blocking vs non-blocking and Synthesis-Simulation mismatch
+* ## [GLS, blocking vs non-blocking and Synthesis-Simulation mismatch](https://github.com/Pramod-Krishna/RTL-design-with-verilog-using-SKY130-Technology#gls-blocking-vs-non-blocking-and-synthesis-simulation-mismatch-1)
 
-* ## Optimization in synthesis
+* ## [Optimization in synthesis](https://github.com/Pramod-Krishna/RTL-design-with-verilog-using-SKY130-Technology#optimization-in-synthesis-1)
+* ## [Acknowledgement](https://github.com/Pramod-Krishna/RTL-design-with-verilog-using-SKY130-Technology#acknowledgement)
+* ## [Reference](https://github.com/Pramod-Krishna/RTL-design-with-verilog-using-SKY130-Technology#references)
 
 
 ***
@@ -171,6 +173,36 @@ On the contrary, _q_ is always 1
 
 # GLS, blocking vs non-blocking and Synthesis-Simulation mismatch
 
+* **_GLSstands_** stands for Gate Level Simulation.
+* Running the Test Bench With Netlist as design under Test.
+* Netlist is logically same as the RTL Code.
+* Same testbench will align with the design.
+
+Why GLS ? 
+* Verify the LOgical Correctness of the design after synthesis.
+* Ensuring the Timing of design is met (For this GLS needs to be run with delay annotation)
+
+**_GLS using iverilog_**
+We give the Netlist,Gate Level Verilog Models and Testbench to the iverilog. Netlist has all the standard cell instantiated and the meaning of standard cell is conveyed to the iverilog by Gate Level Verilog Models. Upon which it has the same flow giving the vcd file using which we can generate Waveform using GTKwave.
+
+Reasons for Synthesis Simulation Mismatch 
+* Missing Sensitivity List
+* Blocking Vs Non-Blocking Assignments
+* Non Standard verilog Coding
+
+Let us look at an example, a verilog file ie. ternary_operator_mux.v
+![Ternary_operator](https://user-images.githubusercontent.com/54993262/120113097-8ffe6080-c196-11eb-8d66-6eb4cd2fca61.JPG)
+The waveforms with the _gtkwave_ command
+![Ternary_operator_output](https://user-images.githubusercontent.com/54993262/120113110-9987c880-c196-11eb-81da-b28a84c0fa99.JPG)
+
+The below snippet is the _yosys_ output
+![Ternary_operator_output_yosys](https://user-images.githubusercontent.com/54993262/120113118-a1e00380-c196-11eb-936f-3f23ebeef806.JPG)
+
+The _GLS_ output can be seen after synthesizing using _yosys_. 
+![GLS_op_ternary_mux](https://user-images.githubusercontent.com/54993262/120113113-9e4c7c80-c196-11eb-9bf4-278eaa36c02d.JPG)
+
+ 
+
 
 ***
 
@@ -225,51 +257,28 @@ Simulator output:
 Synthesis Output:
 ![image](https://user-images.githubusercontent.com/54993262/120110825-d18a0e00-c18c-11eb-8162-e5d4c14b5d9e.png)
 
+__Implementation of Ripple carry adder using Full Adder__
 
+Verilog codes for _ripple carry adder and full adder_
+![image](https://user-images.githubusercontent.com/54993262/120112474-a35bfc80-c193-11eb-853c-82cdccb6cf2b.png)
+![image](https://user-images.githubusercontent.com/54993262/120112489-af47be80-c193-11eb-9358-18b7bab89888.png)
 
+The submodule file should be mentioned, else would result in an error.
+![image](https://user-images.githubusercontent.com/54993262/120112665-5a587800-c194-11eb-8a51-5cbb064db4a9.png)
 
+The output can be verified by looking at _sum_out_ 
+![image](https://user-images.githubusercontent.com/54993262/120112781-f1bdcb00-c194-11eb-9918-c916bf9103e6.png)
+
+***
 
 # Acknowledgement
-* Kunal Ghosh
-* Shon Taware
+* [Kunal Ghosh](https://github.com/kunalg123/)
+* [Shon Taware](https://github.com/ShonTaware)
 
 ***
 
 # References
-* Sky130 Technology
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+* [Sky130 Technology](https://github.com/google/skywater-pdk)
 
 
 
