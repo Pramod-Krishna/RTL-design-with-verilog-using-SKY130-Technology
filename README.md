@@ -20,7 +20,7 @@
 * ## [Optimization in synthesis](https://github.com/Pramod-Krishna/RTL-design-with-verilog-using-SKY130-Technology#optimization-in-synthesis-1)
 * ## [Acknowledgement](https://github.com/Pramod-Krishna/RTL-design-with-verilog-using-SKY130-Technology#acknowledgement)
 * ## [Reference](https://github.com/Pramod-Krishna/RTL-design-with-verilog-using-SKY130-Technology#references)
-
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FPramod-Krishna%2FRTL-design-with-verilog-using-SKY130-Technology&count_bg=%233DC843&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=visitors&edge_flat=true)](https://hits.seeyoufarm.com)
 
 ***
 
